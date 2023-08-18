@@ -40,7 +40,7 @@ namespace Ejercicio_Practica_1_POO
 
                     catch (FormatException)
                     {
-                        Console.WriteLine("NO se pueden ingresar letras ,palabras o espacios en blanco");
+                        Console.WriteLine("NO se pueden ingresar letras, palabras o espacios en blanco");
                     }
                     catch (ArgumentException e)
                     {
