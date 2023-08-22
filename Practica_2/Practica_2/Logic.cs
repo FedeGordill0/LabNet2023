@@ -6,28 +6,15 @@ using System.Threading.Tasks;
 
 namespace Practica_2
 {
-    internal class Logic
+    public class Logic
     {
-        public void Logica()
+        public void MostrarExcepcion()
         {
             throw new Exception("Este método devuelve una excepción");
-            //try
-            //{
-            //    throw new Exception("Este método devuelve una excepción");
-            //}
-            //catch (Exception e)
-            //{
-
-            //}
-            //finally
-            //{
-            //    Console.WriteLine("El programa ha finalizado");
-            //}
-
         }
-        public void Logica_4()
+        public void ExcepcionPersonalizada()
         {
-            throw new MyException("Este método devuelve una excepción personalizada");
+            throw new MyException("Excepción Personalizada: MyException", "Este método devuelve una excepción personalizada");
         }
     }
 }

@@ -6,47 +6,36 @@ using System.Threading.Tasks;
 
 namespace Practica_2
 {
-    internal static class ExtensionMethod
+    public static class ExtensionMethod
     {
-        private static int num1;
-        private static int num2;
         private static int resultado;
 
-        public static int Dividir_Cero(this int num1)
+        public static int DividirCero(this int num1)
         {
             try
             {
-                resultado = num1 / 0;
+                resultado = num1 / 0; 
             }
-            catch (DivideByZeroException div)
+            catch (DivideByZeroException)
             {
-                Console.WriteLine(div.ToString());
+                throw new DivideByZeroException();
             }
             finally
             {
-                Console.WriteLine("El programa ha finalizado");
+                Console.WriteLine("La operación ha finalizado");
             }
-
             return resultado;
         }
 
-        public static int Dividir_2(this int num1, int num2)
+        public static int Dividir(this int num1, int num2)
         {
             try
             {
-                if (num2 == 0)
-                {
-                    throw new DivideByZeroException();
-                }
-
                 resultado = num1 / num2;
-                return resultado;
             }
-
-            catch (DivideByZeroException div)
+            catch (DivideByZeroException)
             {
-                Console.WriteLine("¡Solo Chuck Norris divide por cero!");
-                Console.WriteLine(div.Message);
+                throw new DivideByZeroException("¡Solo Chuck Norris divide por cero!");
             }
             return resultado;
         }
