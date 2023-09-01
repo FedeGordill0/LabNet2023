@@ -42,7 +42,7 @@ namespace Practica_3_EF.Logic.Tests
 
         [TestMethod()]
         [ExpectedException(typeof(MyException))]
-        public void DeleteTest()
+        public void DeleteCategoria()
         {
             var categorias = new List<Categories> {
             new Categories { CategoryID = 10 },

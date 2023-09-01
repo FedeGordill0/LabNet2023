@@ -10,7 +10,7 @@ namespace Practica_3_EF.Logic
 {
     public abstract class BLogic
     {
-        protected  NorthwindContext _context;
+        protected NorthwindContext _context;
 
         public BLogic()
         {
