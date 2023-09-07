@@ -1,0 +1,76 @@
+* {
+  font-family: "Cabinet Grotesk", sans-serif;
+}
+main {
+  text-align: center;
+}
+.section-title {
+  background-color: #5e3bbf;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+.numeroAleatorio {
+  font-size: 60px;
+  text-align: center;
+  padding-top: 8px;
+}
+.container-NA {
+  background-color: #5e3bbf;
+  color: white;
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  margin: 20px auto;
+  border-radius: 100px;
+}
+.score-position {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+.score-space {
+  padding-right: 100px;
+}
+#form-control {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin: 20px auto;
+  width: 15%;
+  text-align: center;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--bs-body-bg);
+  background-clip: padding-box;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.hr {
+  border: 1px solid #5e3bbf;
+  margin: 20px auto;
+  width: 25%;
+  position: relative;
+  top: 10px;
+}
+#btnJugar {
+  font-size: 20px;
+  width: 115px;
+  position: relative;
+  top: 10px;
+}
+#btnReiniciar {
+  font-size: 20px;
+}
+.mayorMenor {
+  position: relative;
+  top: 5px;
+  bottom: 5px;
+}
