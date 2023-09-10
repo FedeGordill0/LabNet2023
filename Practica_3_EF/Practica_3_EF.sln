@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica_3_EF.UI", "Practic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica_3_EF.LogicTests", "Practica_3_EF.LogicTests\Practica_3_EF.LogicTests.csproj", "{A8C6A862-2D5C-4590-A025-85B7602A6B77}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica_3_EF.MVC", "Practica_3_EF.MVC\Practica_3_EF.MVC.csproj", "{08AAF983-605E-4F00-B7EE-0500E091B3B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A8C6A862-2D5C-4590-A025-85B7602A6B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8C6A862-2D5C-4590-A025-85B7602A6B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8C6A862-2D5C-4590-A025-85B7602A6B77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08AAF983-605E-4F00-B7EE-0500E091B3B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08AAF983-605E-4F00-B7EE-0500E091B3B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08AAF983-605E-4F00-B7EE-0500E091B3B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08AAF983-605E-4F00-B7EE-0500E091B3B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

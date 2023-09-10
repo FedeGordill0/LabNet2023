@@ -1,0 +1,46 @@
+﻿@model Practica_3_EF.MVC.Models.CategoryView
+@{ViewBag.Title = "Categorías";}
+
+
+<div>
+    <section class="div-form-views">
+        <h1>Agregar Categoría</h1>
+        <section>
+            @using (Html.BeginForm("Insert", "Category", FormMethod.Post))
+            {
+                <div>
+                    @Html.TextBoxFor(c => c.CategoryName, new { @class = "form-control txtNombre", @placeholder = "Ingresar nombre", @required = "true" })
+                    <p style="display:none" class="validation-nombre-categoria"> El campo no puede tener más de 15 caracteres</p>
+                    <br />
+
+                    @Html.TextBoxFor(c => c.Description, new { @class = "form-control", @placeholder = "Ingresar descripción" })
+
+                    <br />
+
+                </div>
+                <div class="buttons-insert-categoria">
+                    <input id="btnGuardar" type="submit" class="btn btn-success" value="Guardar" />
+                    <input type="button" onclick="document.location.href='@Url.Content("/Category")'" class="btn btn-danger btn-secondary-cancelar" value="Cancelar" />
+                </div>
+            }
+        </section>
+    </section>
+</div>
+
+@*@section Scripts{
+        <script type="text/javascript" charset="utf-8">
+             let btnGuardarCategoria = document.getElementById("btnGuardar");
+             let txtNombreCategoria = document.querySelector(".txtNombre");
+             let validationNombreCategoria = document.querySelector(".validation-nombre");
+
+             btnGuardarCategoria.addEventListener("click", (e) => {
+
+                 if (txtNombreCategoria.value.length > 15) {
+                     e.preventDefault();
+                     validationNombreCategoria.style.color = "red";
+                     validationNombreCategoria.style.display = "";
+
+                 }
+             })
+         </script>
+    }*@

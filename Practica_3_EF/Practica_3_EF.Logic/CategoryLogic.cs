@@ -35,7 +35,7 @@ namespace Practica_3_EF.Logic
             }
         }
 
-        public List<Categories> Get()
+        public List<Categories> GetAll()
         {
             return _context.Categories.ToList();
         }

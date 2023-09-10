@@ -10,7 +10,7 @@ namespace Practica_3_EF.Logic
 {
     public interface ILogic<T> where T : class
     {
-        List<T>Get();
+        List<T> GetAll();
         T Post(T entidad);
         void Delete(int id);
         void Put(T entidad);

@@ -26,7 +26,7 @@ namespace Practica_3_EF.UI
                     switch (opcion)
                     {
                         case 1:
-                            var categories = c.Get();
+                            var categories = c.GetAll();
 
                             foreach (var category in categories)
                             {
@@ -83,7 +83,7 @@ namespace Practica_3_EF.UI
                             break;
 
                         case 5:
-                            var employees = e.Get();
+                            var employees = e.GetAll();
 
                             foreach (var employee in employees)
                             {

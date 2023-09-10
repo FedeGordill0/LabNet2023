@@ -1,0 +1,54 @@
+﻿
+@model List<Practica_3_EF.MVC.Models.CategoryView>
+@{ ViewBag.Title = "Categorías"; }
+
+
+<h1>Listado de Categorías</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr id="@c.CategoryID">
+                <td scope="row">@c.CategoryName</td>
+                <td scope="row">@c.Description</td>
+                <td scope="row">
+                    @if (c.CategoryID < 9)
+                    {
+                        <input class="btn btn-danger" type="button" value="Eliminar Categoría" onclick="eliminarCategoria(@c.CategoryID)" />
+                    }
+                    else
+                    {
+                        <input class="btn btn-danger" type="button" value="Eliminar Categoría" onclick="document.location.href ='@Url.Content("/Category/Delete/" + @c.CategoryID)'" />
+                    }
+                    <input class="btn btn-secondary" type="button" value="Modificar Categoría" onclick="document.location.href ='@Url.Content("/Category/Update/" + @c.CategoryID)'" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <input type="button" value="Agregar Categoría" class="btn btn-primary" onclick="document.location.href='@Url.Content("/Category/Insert")'" />
+    <input onclick="document.location.href='@Url.Content("/Home")'" type="button" value="Volver a Inicio" class="btn btn-info btn-volver" />
+</div>
+
+@*@section Scripts{
+        <script type="text/javascript" charset="utf-8">
+            function eliminarCategoria(categoriaID) {
+                if (categoriaID < 9) {
+                    let id = document.getElementById(`${c ategoriaID}`);
+                    if (id) {
+                        id.style.display = "none";
+                    }
+                }
+            }
+        </script>
+    }*@

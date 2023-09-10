@@ -33,7 +33,7 @@ namespace Practica_3_EF.Logic
             }
         }
 
-        public List<Employees> Get()
+        public List<Employees> GetAll()
         {
             return _context.Employees.ToList();
         }
