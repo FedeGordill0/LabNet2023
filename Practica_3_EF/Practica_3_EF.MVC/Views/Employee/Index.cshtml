@@ -46,16 +46,3 @@
     <input onclick="document.location.href='@Url.Content("/Employee/Insert")'" type="button" value="Agregar Empleado" class="btn btn-primary" />
     <input onclick="document.location.href='@Url.Content("/Home")'" type="button" value="Volver a Inicio" class="btn btn-info btn-volver" />
 </div>
-
-@*@section Scripts{
-        <script type="text/javascript" charset="utf-8">
-            function eliminarEmpleado(empleadoId) {
-                if (empleadoId < 10) {
-                    let id = document.getElementById(`${empleadoId}`);
-                    if (id) {
-                        id.style.display = "none";
-                    }
-                }
-            }
-        </script>
-    }*@

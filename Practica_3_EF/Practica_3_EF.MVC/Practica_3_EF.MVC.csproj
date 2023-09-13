@@ -130,11 +130,13 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlaceholderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoryView.cs" />
     <Compile Include="Models\EmployeeView.cs" />
+    <Compile Include="Models\JPHView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +199,7 @@
     <Content Include="Views\Category\Update.cshtml" />
     <Content Include="Views\Employee\Insert.cshtml" />
     <Content Include="Views\Employee\Update.cshtml" />
+    <Content Include="Views\Placeholder\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

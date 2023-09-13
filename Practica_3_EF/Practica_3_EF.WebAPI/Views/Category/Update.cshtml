@@ -1,0 +1,34 @@
+﻿@model Practica_3_EF.WebAPI.Models.CategoryView
+@{ViewBag.Title = "Categorías";}
+
+
+<div>
+    <section class="div-form-views">
+        <h1>Modificar Categoría</h1>
+        <section>
+            @using (Html.BeginForm("UpdateCategoria", "Category", FormMethod.Post))
+            {
+                <div>
+                    @Html.HiddenFor(c => c.CategoryID, new { @id = "id" })
+
+                    @Html.TextBoxFor(c => c.CategoryName, new { @class = "form-control txtNombre", @placeholder = "Ingresar nombre", @required = "true" })
+                    <p style="display:none" class="validation-nombre-categoria"> El campo no puede tener más de 15 caracteres</p>
+                    <br />
+
+                    @Html.TextBoxFor(c => c.Description, new { @class = "form-control", @placeholder = "Ingresar descripción" })
+
+                    <br />
+
+                </div>
+                <div class="buttons-insert-categoria">
+                    <input id="btnGuardar" type="submit" class="btn btn-success" value="Guardar" />
+                    <input type="button" onclick="document.location.href='@Url.Content("/Category")'" class="btn btn-danger btn-secondary-cancelar" value="Cancelar" />
+                </div>
+            }
+
+        </section>
+
+    </section>
+
+</div>
+

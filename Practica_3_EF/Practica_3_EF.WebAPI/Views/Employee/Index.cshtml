@@ -1,0 +1,48 @@
+﻿@model List<Practica_3_EF.WebAPI.Models.EmployeeView>
+@{ ViewBag.Title = "Empleados"; }
+
+<h1> Listado de Empleados</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">País</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{ foreach (var e in Model)
+            {
+                <tr id="@e.EmployeeID">
+                    <td scope="row"> @e.FirstName </td>
+                    <td scope="row"> @e.LastName</td>
+                    <td scope="row"> @e.Title</td>
+                    <td scope="row"> @e.Country</td>
+
+                    <td scope="row">
+                        @if (e.EmployeeID < 10)
+                        {
+                            <input class="btn btn-danger" type="button" value="Eliminar Empleado" onclick="eliminarEmpleado(@e.EmployeeID)" />
+                        }
+                        else
+                        {
+                            <input class="btn btn-danger" type="button" value="Eliminar Empleado" onclick="document.location.href ='@Url.Content("/Employee/DeleteEmpleado/" + @e.EmployeeID)'" />
+                        }
+
+                        <input onclick="document.location.href='@Url.Content("/Employee/Update/" + e.EmployeeID)'" type="button" value="Modificar Empleado" class="btn btn-secondary" />
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+<div>
+    <input onclick="document.location.href='@Url.Content("/Employee/Insert")'" type="button" value="Agregar Empleado" class="btn btn-primary" />
+    <input onclick="document.location.href='@Url.Content("/Home")'" type="button" value="Volver a Inicio" class="btn btn-info btn-volver" />
+</div>

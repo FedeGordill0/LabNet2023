@@ -1,0 +1,39 @@
+﻿@model Practica_3_EF.WebAPI.Models.EmployeeView
+@{ViewBag.Title = "Empleados";}
+
+
+<div>
+    <section class="div-form-views">
+        <h1>Modificar Empleado</h1>
+        <section>
+            @using (Html.BeginForm("UpdateEmpleado", "Employee", FormMethod.Post))
+            {
+                <div>
+                    @Html.HiddenFor(e => e.EmployeeID, new { @id = "id" })
+
+                    @Html.TextBoxFor(e => e.FirstName, new { @class = "form-control txtNombre", @placeholder = "Ingresar nombre", @required = "true" })
+                    <p style="display:none" class="validation-nombre"> El campo no puede tener más de 10 caracteres</p>
+                    <br />
+
+                    @Html.TextBoxFor(e => e.LastName, new { @class = "form-control txtApellido", @placeholder = "Ingresar apellido", @required = "true" })
+                    <p style="display:none" class="validation-apellido"> El campo no puede tener más de 20 caracteres</p>
+                    <br />
+                    @Html.TextBoxFor(e => e.Title, new { @class = "form-control txtCargo", @placeholder = "Ingresar cargo", @required = "true" })
+                    <p style="display:none" class="validation-cargo"> El campo no puede tener más de 30 caracteres</p>
+                    <br />
+                    @Html.TextBoxFor(e => e.Country, new { @class = "form-control txtPais", @placeholder = "Ingresar país", @required = "true" })
+                    <p style="display:none" class="validation-pais"> El campo no puede tener más de 15 caracteres</p>
+
+                    <br />
+
+                </div>
+
+                <div class="buttons-insert-categoria">
+                    <input id="btnGuardar" type="submit" class="btn btn-success" value="Guardar" />
+                    <input type="button" onclick="document.location.href='@Url.Content("/Employee")'" class="btn btn-danger btn-secondary-cancelar" value="Cancelar" />
+                </div>
+            }
+
+        </section>
+    </section>
+</div>

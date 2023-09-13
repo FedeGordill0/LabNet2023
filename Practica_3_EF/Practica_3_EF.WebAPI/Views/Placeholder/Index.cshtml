@@ -1,0 +1,32 @@
+﻿
+@model List<Practica_3_EF.WebAPI.Models.JPHView>
+@{ ViewBag.Title = "JSONPlaceholder"; }
+
+
+<h1>Listado</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">User ID</th>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Body</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var j in Model)
+        {
+            <tr>
+                <td scope="row">@j.userId</td>
+                <td scope="row">@j.id</td>
+                <td scope="row">@j.title</td>
+                <td scope="row">@j.body</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <input onclick="document.location.href='@Url.Content("/Home")'" type="button" value="Volver a Inicio" class="btn btn-info btn-volver" />
+</div>
