@@ -1,0 +1,32 @@
+<div class="todo">
+  <mat-card style="width: 500px;height: 450px;padding: 20px;">
+    <form style="max-width: 450px;" class="body-form" [formGroup]="formulario">
+      <h1 style="text-align: center;">Modificar Empleado</h1>
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input maxLength="10" type="text" id="inputNombre" name="FirstName" formControlName="FirstName" matInput>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Apellido</mat-label>
+        <input maxLength="20" type="text" id="inputApellido" name="LastName" formControlName="LastName" matInput>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Cargo</mat-label>
+        <input maxLength="30" type="text" id="inputCargo" name="Title" formControlName="Title" matInput>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>País</mat-label>
+        <input maxLength="15" type="text" id="inputPais" name="Country" formControlName="Country" matInput>
+      </mat-form-field>
+
+      <div class="button-position">
+        <button class="boton" mat-raised-button color="primary" (click)="guardar()">Guardar</button>
+        <button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>
+      </div>
+
+    </form>
+  </mat-card>
+</div>

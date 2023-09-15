@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <div class="todo">
+    <h1>Listado de Empleados</h1>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
+
+      <ng-container class="info-position" matColumnDef="FirstName">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let empleado">{{empleado.FirstName}}</td>
+      </ng-container>
+
+
+      <ng-container class="info-position" matColumnDef="LastName">
+        <th mat-header-cell *matHeaderCellDef>Apellido</th>
+        <td mat-cell *matCellDef="let empleado">{{empleado.LastName}}</td>
+      </ng-container>
+
+      <ng-container class="info-position" matColumnDef="Title">
+        <th mat-header-cell *matHeaderCellDef>Cargo</th>
+        <td mat-cell *matCellDef="let empleado">{{empleado.Title}}</td>
+      </ng-container>
+
+      <ng-container class="info-position" matColumnDef="Country">
+        <th mat-header-cell *matHeaderCellDef>País</th>
+        <td mat-cell *matCellDef="let empleado">{{empleado.Country}}</td>
+      </ng-container>
+
+      <ng-container class="info-position" matColumnDef="Acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let empleado">
+          <button [routerLink]="['/modificarEmpleado/' + empleado.EmployeeID]" mat-mini-fab color="primary">
+            <mat-icon>edit</mat-icon></button>
+          <app-employee-eliminar [empleado]="empleado" (onEliminar)="actualizarListado()"></app-employee-eliminar>
+        </td>
+      </ng-container>
+
+      <ng-container class="info-position" matColumnDef="a">
+        <th mat-header-cell *matHeaderCellDef>
+          <button (click)="irNuevoEmpleado()" mat-mini-fab color="primary">
+            <mat-icon>add</mat-icon>
+          </button>
+        </th>
+        <td mat-cell *matCellDef=""></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator class="end" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page">
+    </mat-paginator>
+    <br>
+    <button mat-raised-button color="primary" [routerLink]="['/dashboard']">Volver a Inicio</button>
+  </div>
+</div>

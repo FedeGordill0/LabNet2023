@@ -1,0 +1,19 @@
+table {
+  width: 100%;
+  max-width: 70%;
+}
+.todo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px auto;
+}
+.a {
+  width: 45px;
+  height: 45px;
+}
+
+.end {
+  display: flex;
+  justify-content: end;
+}

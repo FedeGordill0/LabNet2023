@@ -37,6 +37,11 @@ namespace Practica_3_EF.Logic
         {
             return _context.Employees.ToList();
         }
+        public Employees GetID(int id)
+        {
+            var empleado = _context.Employees.Find(id);
+            return empleado;
+        }
 
         public Employees Post(Employees entidad)
         {

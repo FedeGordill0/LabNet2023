@@ -1,0 +1,22 @@
+<div class="todo">
+  <mat-card style="width: 500px;height: 300px;padding: 20px;">
+    <form style="max-width: 450px;" class="body-form" [formGroup]="formulario">
+      <h1 style="text-align: center;">Registrar Categoría</h1>
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input type="text" id="inputNombre" name="CategoryName" formControlName="CategoryName" matInput>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Descripción</mat-label>
+        <input type="text" id="inputDescripcion" name="Description" formControlName="Description" matInput>
+      </mat-form-field>
+
+      <div class="button-position">
+        <button class="boton" mat-raised-button color="primary" (click)="guardar()">Guardar</button>
+        <button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>
+      </div>
+
+    </form>
+  </mat-card>
+</div>

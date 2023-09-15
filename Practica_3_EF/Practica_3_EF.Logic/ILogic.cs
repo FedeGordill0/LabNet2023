@@ -11,6 +11,7 @@ namespace Practica_3_EF.Logic
     public interface ILogic<T> where T : class
     {
         List<T> GetAll();
+        T GetID(int id);
         T Post(T entidad);
         void Delete(int id);
         void Put(T entidad);

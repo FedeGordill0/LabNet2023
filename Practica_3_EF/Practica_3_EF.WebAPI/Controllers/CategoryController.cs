@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Http;
+using System.Web.Http.Cors;
+
 namespace Practica_3_EF.WebAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CategoryController : Controller
     {
         // GET: CategoryAPI

@@ -33,7 +33,7 @@ namespace Practica_3_EF.Logic.Tests
             northwindContextMock.Setup(c => c.Categories).Returns(tablaCategoria.Object);
 
             var categoriaLogic = new CategoryLogic(northwindContextMock.Object);
-            var categoria = categoriaLogic.Get();
+            var categoria = categoriaLogic.GetAll();
 
             Assert.AreEqual(2, categoria.Count);
             Assert.AreEqual("categoria1", categoria[0].CategoryName);

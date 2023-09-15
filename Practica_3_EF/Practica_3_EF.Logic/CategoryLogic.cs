@@ -14,8 +14,9 @@ namespace Practica_3_EF.Logic
     {
         public CategoryLogic()
         {
-           
-        }public CategoryLogic(NorthwindContext context)
+
+        }
+        public CategoryLogic(NorthwindContext context)
         {
             _context = context;
         }
@@ -39,6 +40,13 @@ namespace Practica_3_EF.Logic
         {
             return _context.Categories.ToList();
         }
+
+        public Categories GetID(int id)
+        {
+            var categoria = _context.Categories.Find(id);
+            return categoria;
+        }
+
 
         public Categories Post(Categories entidad)
         {
@@ -75,7 +83,7 @@ namespace Practica_3_EF.Logic
             else
             {
                 throw new MyException("No existe la categoría con ID: " + entidad.CategoryID);
-                    throw new OverflowException("El valor del ID es demasiado grande");
+                throw new OverflowException("El valor del ID es demasiado grande");
             }
         }
     }

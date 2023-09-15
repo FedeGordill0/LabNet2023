@@ -8,10 +8,12 @@ using System.Deployment.Internal;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Routing;
 
 namespace Practica_3_EF.WebAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CategoryAPIController : ApiController
     {
         CategoryLogic cLogic = new CategoryLogic();
@@ -38,6 +40,31 @@ namespace Practica_3_EF.WebAPI.Controllers
             }
         }
 
+        public IHttpActionResult GetCategoria(int id)
+        {
+            try
+            {
+                Categories categoria = cLogic.GetID(id);
+                
+
+                if (categoria == null)
+                {
+                    return NotFound();
+                }
+
+                CategoryView categoriaDto = new CategoryView
+                {
+                    CategoryID = categoria.CategoryID,
+                    CategoryName = categoria.CategoryName,
+                    Description = categoria.Description
+                };
+                return Ok(categoriaDto);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception("Ocurrió un error al obtener la categoría.", ex));
+            }
+        }
 
         [HttpPost]
         public IHttpActionResult PostCategoria([FromBody] CategoryView categoryView)

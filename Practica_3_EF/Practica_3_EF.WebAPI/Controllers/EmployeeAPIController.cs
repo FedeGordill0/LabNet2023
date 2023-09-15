@@ -9,10 +9,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace Practica_3_EF.WebAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class EmployeeAPIController : ApiController
     {
         EmployeeLogic eLogic = new EmployeeLogic();
@@ -37,6 +40,34 @@ namespace Practica_3_EF.WebAPI.Controllers
             catch (Exception e)
             {
                 return Content(HttpStatusCode.BadRequest, e);
+            }
+        }
+
+        public IHttpActionResult GetEmpleado(int id)
+        {
+            try
+            {
+                Employees empleado = eLogic.GetID(id);
+
+
+                if (empleado == null)
+                {
+                    return NotFound();
+                }
+
+                EmployeeView empleadoDto = new EmployeeView
+                {
+                    EmployeeID = empleado.EmployeeID,
+                    FirstName = empleado.FirstName,
+                    LastName = empleado.LastName,
+                    Title = empleado.Title,
+                    Country = empleado.Country
+                };
+                return Ok(empleadoDto);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception("Ocurrió un error al obtener la categoría.", ex));
             }
         }
 
