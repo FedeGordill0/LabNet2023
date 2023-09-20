@@ -14,7 +14,6 @@ namespace Practica_3_EF.Logic
     {
         public CategoryLogic()
         {
-
         }
         public CategoryLogic(NorthwindContext context)
         {
@@ -22,10 +21,21 @@ namespace Practica_3_EF.Logic
         }
         public void Delete(int id)
         {
-            var idCategoria = _context.Categories.Find(id);
+            var idCategoria = _context.Categories
+            .Include(c => c.Products) 
+            .FirstOrDefault(c => c.CategoryID == id);
 
             if (idCategoria != null)
             {
+                foreach (var producto in idCategoria.Products.ToList())
+                {
+                    foreach (var detalleOrden in producto.Order_Details.ToList())
+                    {
+                        _context.Order_Details.Remove(detalleOrden);
+                    }
+
+                    _context.Products.Remove(producto);
+                }
                 _context.Categories.Remove(idCategoria);
                 _context.SaveChanges();
             }

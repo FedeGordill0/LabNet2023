@@ -7,7 +7,7 @@ import { EmployeeListadoComponent } from './Components/Employee/employee-listado
 import { EmployeeAltaComponent } from './Components/Employee/employee-alta/employee-alta.component';
 import { EmployeeActualizarComponent } from './Components/Employee/employee-actualizar/employee-actualizar.component';
 import { DashboardComponent } from './Components/Home/dashboard/dashboard.component';
-
+//cambiar nombre ruta empleadp
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'listadoCategorias', component: CategoryListadoComponent },

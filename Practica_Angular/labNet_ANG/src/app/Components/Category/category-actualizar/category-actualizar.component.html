@@ -1,11 +1,14 @@
-<div class="todo">
-  <mat-card style="width: 500px;height: 300px;padding: 20px;">
-    <form style="max-width: 450px;" class="body-form" [formGroup]="formulario">
-      <h1 style="text-align: center;">Registrar Categoría</h1>
+<div class="form-container">
+  <mat-card class="mat-card-style">
+    <form class="body-form" [formGroup]="formulario">
+      <h1>Modificar Categoría</h1>
       <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
         <input type="text" id="inputNombre" name="CategoryName" formControlName="CategoryName" matInput>
       </mat-form-field>
+      <div #divValidacion style="display: none; color: red;">
+        <p>El campo Nombre no puede superar los 15 caracteres</p>
+      </div>
 
       <mat-form-field appearance="fill">
         <mat-label>Descripción</mat-label>
@@ -13,10 +16,9 @@
       </mat-form-field>
 
       <div class="button-position">
-        <button class="boton" mat-raised-button color="primary" (click)="guardar()">Guardar</button>
+        <button class="button-margin btn btn-success" (click)="guardar()">Guardar</button>
         <button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>
       </div>
-
     </form>
   </mat-card>
 </div>

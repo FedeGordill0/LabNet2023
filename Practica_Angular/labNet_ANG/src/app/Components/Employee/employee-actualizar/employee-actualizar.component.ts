@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
-
 import { Subscription } from 'rxjs';
 import { Employee } from 'src/app/Models/employee';
 import { EmployeeService } from 'src/app/Services/employee.service';
+import { MessageComponent } from '../../Messages/Error/message/message.component';
+import { UpdateMessageComponent } from '../../Messages/Success/Employee/update-message/update-message.component';
 
 @Component({
   selector: 'app-employee-actualizar',
@@ -15,17 +17,23 @@ export class EmployeeActualizarComponent {
   private suscripcion = new Subscription();
   formulario: FormGroup;
   empleado: Employee;
+  validarNombre: any;
+  validarApellido: any;
+  validarCargo: any;
+  validarPais: any;
+
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
     private fb: FormBuilder,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private _snackBar: MatSnackBar
   ) {
     this.formulario = this.fb.group({
-      FirstName: ['', Validators.required, Validators.maxLength(10)],
-      LastName: ['', Validators.required, Validators.maxLength(20)],
-      Title: ['', Validators.required, Validators.maxLength(30)],
-      Country: ['', Validators.required, Validators.maxLength(15)],
+      FirstName: ['', Validators.required],
+      LastName: ['', Validators.required],
+      Title: ['', Validators.required],
+      Country: ['', Validators.required],
     });
   }
 
@@ -44,15 +52,41 @@ export class EmployeeActualizarComponent {
         this.employeeService.putEmpleado(this.empleado).subscribe({
           next: () => {
             this.router.navigate(['listadoEmpleados']);
+            this.openSnackBarSuccess();
           },
           error: () => {
-            alert('ERROR putEmpleado()');
+            this.validarNombre = false;
+            this.validarApellido = false;
+            this.validarCargo = false;
+            this.validarPais = false;
+
+            if (this.formulario.value.FirstName.length > 10) {
+              this.validarNombre = true;
+            } else if (this.formulario.value.LastName.length > 20) {
+              this.validarApellido = true;
+            } else if (this.formulario.value.Title.length > 20) {
+              this.validarCargo = true;
+            } else if (this.formulario.value.Country.length > 20) {
+              this.validarPais = true;
+            }
           },
         })
       );
     } else {
-      alert('error de formulario');
+      this.openSnackBarError();
     }
+  }
+
+  openSnackBarSuccess() {
+    this._snackBar.openFromComponent(UpdateMessageComponent, {
+      duration: 1 * 1000,
+    });
+  }
+
+  openSnackBarError() {
+    this._snackBar.openFromComponent(MessageComponent, {
+      duration: 1 * 1000,
+    });
   }
 
   cancelar() {
@@ -71,21 +105,17 @@ export class EmployeeActualizarComponent {
               this.empleado = e;
               this.formulario = this.fb.group({
                 EmployeeID: [e.EmployeeID],
-                FirstName: [e.FirstName],
-                LastName: [e.LastName],
-                Title: [e.Title],
-                Country: [e.Country],
+                FirstName: [e.FirstName, Validators.required],
+                LastName: [e.LastName, Validators.required],
+                Title: [e.Title, Validators.required],
+                Country: [e.Country, Validators.required],
               });
             },
-            error: () => {
-              alert('ERROR employeeService.getEmpleadoID');
-            },
+            error: () => {},
           });
         }
       },
-      error: () => {
-        alert('error activatedRoute');
-      },
+      error: () => {},
     });
   }
 }

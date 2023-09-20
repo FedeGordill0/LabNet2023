@@ -1,29 +1,37 @@
-<div class="todo">
-  <mat-card style="width: 500px;height: 450px;padding: 20px;">
-    <form style="max-width: 450px;" class="body-form" [formGroup]="formulario">
-      <h1 style="text-align: center;">Registrar Empleado</h1>
+<div class="form-container">
+  <mat-card class="mat-card-style">
+    <form class="body-form" [formGroup]="formulario">
+      <h1>Registrar Empleado</h1>
       <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
-        <input maxLength="10" type="text" id="inputNombre" name="FirstName" formControlName="FirstName" matInput>
+        <input type="text" id="inputNombre" name="FirstName" formControlName="FirstName" matInput>
       </mat-form-field>
-
+      <div *ngIf="validarNombre">
+        <p class="error-message">El campo no puede superar los 10 caracteres</p>
+      </div>
       <mat-form-field appearance="fill">
         <mat-label>Apellido</mat-label>
-        <input maxLength="20" type="text" id="inputApellido" name="LastName" formControlName="LastName" matInput>
+        <input type="text" id="inputApellido" name="LastName" formControlName="LastName" matInput>
       </mat-form-field>
-
+      <div *ngIf="validarApellido">
+        <p class="error-message">El campo no puede superar los 20 caracteres</p>
+      </div>
       <mat-form-field appearance="fill">
         <mat-label>Cargo</mat-label>
-        <input maxLength="30" type="text" id="inputCargo" name="Title" formControlName="Title" matInput>
+        <input type="text" id="inputCargo" name="Title" formControlName="Title" matInput>
       </mat-form-field>
-
+      <div *ngIf="validarCargo">
+        <p class="error-message">El campo no puede superar los 30 caracteres</p>
+      </div>
       <mat-form-field appearance="fill">
         <mat-label>País</mat-label>
-        <input maxLength="15" type="text" id="inputPais" name="Country" formControlName="Country" matInput>
+        <input type="text" id="inputPais" name="Country" formControlName="Country" matInput>
       </mat-form-field>
-
+      <div *ngIf="validarPais">
+        <p class="error-message">El campo no puede superar los 15 caracteres</p>
+      </div>
       <div class="button-position">
-        <button class="boton" mat-raised-button color="primary" (click)="guardar()">Guardar</button>
+        <button class="button-margin btn btn-success" (click)="guardar()">Guardar</button>
         <button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>
       </div>
 

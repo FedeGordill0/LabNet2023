@@ -1,36 +1,29 @@
 <div>
-  <div>
-    <p>
-      <mat-toolbar class="color-asd" style="display: flex;flex-direction: row; justify-content: center;">
-
-        <div class="dropdown">
-          <a class="dropdown a-position" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-            mat-button>Categorías</a>
-          <ul class="dropdown-menu">
-            <li> <a mat-button [routerLink]="['/listadoCategorias']">Listado Categorías</a></li>
-            <li> <a mat-button [routerLink]="['/altaCategoria']">Añadir nueva Categoría</a></li>
-          </ul>
-        </div>
-        <div class="dropdown">
-          <a class="dropdown a-position" type="button" data-bs-toggle="dropdown" aria-expanded="false" mat-button>
-            Empleados</a>
-          <ul class="dropdown-menu">
-            <li> <a mat-button [routerLink]="['/listadoEmpleados']">Listado Empleados</a></li>
-            <li> <a mat-button [routerLink]="['/altaEmpleado']">Añadir nuevo Empleado</a></li>
-          </ul>
-        </div>
-
-      </mat-toolbar>
-    </p>
-  </div>
-
-  <div style="display: flex;flex-direction: column;justify-content: center;margin: 70px">
-    <mat-card class="example-card">
-      <mat-card-title>Práctico 8 - Angular + ASP.NET WEB API</mat-card-title>
-      <mat-card-subtitle>Federico Gordillo</mat-card-subtitle>
+  <div class="div-mat-card">
+    <mat-card class="example-card mat-card-CRUD">
       <mat-card-content>
-        <p>CRUD realizado sobre las entidades Categories y Employees <br> provenientes de la base de datos Northwind</p>
+        <p>Operaciones CRUD realizadas sobre las entidades Categories y Employees <br> de la base de datos Northwind</p>
       </mat-card-content>
+      <mat-card-subtitle>Federico Gordillo</mat-card-subtitle>
     </mat-card>
   </div>
+</div>
+
+<div class="div-container-items">
+  <mat-card class="example-card mat-card-list-1">
+
+    <img class="img-list" mat-card-image src="../../../../assets/listadoCategorias.png">
+
+    <mat-card-actions class="mat-card-actions-display">
+      <button class="btn btn-primary" [routerLink]="['/listadoCategorias']">Listado Categorías</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="example-card mat-card-list-2">
+    <img class="img-list" mat-card-image src="../../../../assets/listadoEmpleados.png">
+
+    <mat-card-actions class="mat-card-actions-display">
+      <button class="btn btn-primary" [routerLink]="['/listadoEmpleados']">Listado Empleados</button>
+    </mat-card-actions>
+  </mat-card>
 </div>

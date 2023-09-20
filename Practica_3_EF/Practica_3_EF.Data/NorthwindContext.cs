@@ -93,6 +93,7 @@ namespace Practica_3_EF.Data
             modelBuilder.Entity<Territories>()
                 .Property(e => e.TerritoryDescription)
                 .IsFixedLength();
+
         }
     }
 }

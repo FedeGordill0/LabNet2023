@@ -7,6 +7,44 @@
   margin-right: 10px;
   color: white;
 }
-.color-asd {
+
+.btn {
+  border: none;
   background-color: #5f35c3;
+}
+.btn:hover,
+.btn:focus {
+  background-color: #522da8;
+}
+.div-mat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 35px;
+}
+.mat-card-CRUD {
+  width: 500px;
+  text-align: center;
+}
+.div-container-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img-list {
+  max-width: 750px;
+}
+
+.mat-card-list-1 {
+  margin-right: 15px;
+  width: 570px;
+}
+
+.mat-card-list-2 {
+  width: 570px;
+}
+.mat-card-actions-display {
+  display: flex;
+  justify-content: end;
 }

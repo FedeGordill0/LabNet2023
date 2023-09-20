@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 import { Category } from 'src/app/Models/category';
 import { CategoryService } from 'src/app/Services/category.service';
+import { MessageComponent } from '../../Messages/Error/message/message.component';
+import { UpdateMessageComponent } from '../../Messages/Success/Category/update-message/update-message.component';
 
 @Component({
   selector: 'app-category-actualizar',
@@ -15,14 +18,17 @@ export class CategoryActualizarComponent {
   private suscripcion = new Subscription();
   formulario: FormGroup;
   categoria: Category;
+  @ViewChild('divValidacion') divValidacion: ElementRef;
+
   constructor(
     private categoryService: CategoryService,
     private router: Router,
     private fb: FormBuilder,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private _snackBar: MatSnackBar
   ) {
     this.formulario = this.fb.group({
-      CategoryName: ['', Validators.required, Validators.maxLength(15)],
+      CategoryName: ['', Validators.required],
       Description: [''],
     });
   }
@@ -41,20 +47,35 @@ export class CategoryActualizarComponent {
       this.suscripcion.add(
         this.categoryService.putCategoria(this.categoria).subscribe({
           next: () => {
+            this.openSnackBarSuccess();
             this.router.navigate(['listadoCategorias']);
           },
           error: () => {
-            alert('ERROR puttCategoria()');
+            if (this.formulario.value.CategoryName.length > 15) {
+              this.divValidacion.nativeElement.style.display = '';
+            }
           },
         })
       );
     } else {
-      alert('error de formulario');
+      this.openSnackBarError();
     }
   }
 
   cancelar() {
     this.router.navigate(['listadoCategorias']);
+  }
+
+  openSnackBarSuccess() {
+    this._snackBar.openFromComponent(UpdateMessageComponent, {
+      duration: 1 * 1000,
+    });
+  }
+
+  openSnackBarError() {
+    this._snackBar.openFromComponent(MessageComponent, {
+      duration: 1 * 1000,
+    });
   }
 
   mostrarForm() {
@@ -68,19 +89,15 @@ export class CategoryActualizarComponent {
               this.categoria = c;
               this.formulario = this.fb.group({
                 CategoryID: [c.CategoryID],
-                CategoryName: [c.CategoryName],
+                CategoryName: [c.CategoryName, Validators.required],
                 Description: [c.Description],
               });
             },
-            error: () => {
-              alert('ERROR categoryService.getCategoria');
-            },
+            error: () => {},
           });
         }
       },
-      error: () => {
-        alert('error activatedRoute');
-      },
+      error: () => {},
     });
   }
 }

@@ -1,23 +1,30 @@
 <div class="container-fluid">
-  <div class="todo">
+
+  <div class="list-container">
     <h1>Listado de Categorías</h1>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
+
+    <mat-form-field>
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="filtro($event)" #input>
+    </mat-form-field>
+
+    <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z1">
 
       <ng-container class="info-position" matColumnDef="CategoryName">
-        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
         <td mat-cell *matCellDef="let categoria">{{categoria.CategoryName}}</td>
       </ng-container>
 
 
       <ng-container class="info-position" matColumnDef="Description">
-        <th mat-header-cell *matHeaderCellDef>Descripción</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Descripción</th>
         <td mat-cell *matCellDef="let categoria">{{categoria.Description}}</td>
       </ng-container>
 
       <ng-container class="info-position" matColumnDef="Acciones">
         <th mat-header-cell *matHeaderCellDef>Acciones</th>
         <td mat-cell *matCellDef="let categoria">
-          <button [routerLink]="['/modificarCategoria/' + categoria.CategoryID]" mat-mini-fab color="primary">
+          <button class="button-edit-color" [routerLink]="['/modificarCategoria/' + categoria.CategoryID]" mat-mini-fab>
             <mat-icon>edit</mat-icon></button>
           <app-category-eliminar [categoria]="categoria" (onEliminar)="actualizarListado()"></app-category-eliminar>
         </td>
@@ -25,7 +32,7 @@
 
       <ng-container class="info-position" matColumnDef="a">
         <th mat-header-cell *matHeaderCellDef>
-          <button (click)="irNuevaCategoria()" mat-mini-fab color="primary">
+          <button (click)="irNuevaCategoria()" mat-mini-fab class="button-add-color">
             <mat-icon>add</mat-icon>
           </button>
         </th>
@@ -35,11 +42,13 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <mat-paginator class="end" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
-      aria-label="Select page">
-    </mat-paginator>
+    <div class="width-paginator">
+      <mat-paginator class="paginator-end" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page">
+      </mat-paginator>
+    </div>
     <br>
-    <button mat-raised-button color="primary" [routerLink]="['/dashboard']">Volver a Inicio</button>
+    <button class="button-size btn btn-primary" [routerLink]="['/dashboard']">Volver a Inicio</button>
   </div>
-
+  <br>
 </div>

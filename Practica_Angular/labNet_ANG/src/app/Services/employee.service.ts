@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class EmployeeService {
   api_url: string = environment.api_empleados_url;
-  //https://localhost:44312/api/CategoryAPI
+  //https://localhost:44312/api/EmployeeAPI
   constructor(private http: HttpClient) {}
 
   getEmpleados(): Observable<Employee[]> {

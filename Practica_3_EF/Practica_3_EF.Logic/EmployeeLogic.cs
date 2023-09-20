@@ -11,15 +11,18 @@ namespace Practica_3_EF.Logic
     {
         public EmployeeLogic()
         {
-          
-        } 
+
+        }
         public EmployeeLogic(NorthwindContext context)
         {
             _context = context;
         }
         public void Delete(int id)
         {
-            var idEmpleado = _context.Employees.Find(id);
+            var idEmpleado = _context.Employees
+                .Include("Orders")
+                .Include("Territories")
+                .FirstOrDefault(e => e.EmployeeID == id);
 
             if (idEmpleado != null)
             {
